@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const argon2 = require('argon2'); 
+const jwt = require('json');
 
 const User = require('../models/User');
 
@@ -27,6 +28,7 @@ router.post('/register', async(req,res) => {
 
         //trả lại token 
         const accessToken = jwt.sign({userId: newUser._id}, process.env.ACCESS_TOKEN_SECRET); //userId =newUser sau khi newUser.save()lưu rồi thì userId: newUser.-id được tạo ra(id được tạo ra) trong database và nó sẽ thành data đưa vào accessToken và khi người dùng gửi accessToken cho chúng ta thì ta móc ra được userId để kiểm tra
+        res.json({success: true, message: 'user created successfully', accessToken});
     } catch (error) {
         
     }

@@ -1,1 +1,7 @@
-GET http://localhost:5000/api/auth
+POST  http://localhost:5000/api/auth/register
+Content-Type: application/json
+
+{
+    "username": "wind1",
+    "password": "wind"
+}
