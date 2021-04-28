@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const argon2 = require('argon2'); 
-const jwt = require('json');
+const jwt = require('jsonwebtoken');
 
 const User = require('../models/User');
 
@@ -32,7 +32,6 @@ router.post('/register', async(req,res) => {
     } catch (error) {
         
     }
-
 })
 
 //exports file auth.js lại
