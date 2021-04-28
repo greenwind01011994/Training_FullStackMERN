@@ -1,6 +1,8 @@
 const express = require('express');
 const mongoose =require('mongoose');
 
+const authRouter = require('./routes/auth');
+
 const connectDB = async () => {
     try {
         await mongoose.connect(`mongodb+srv://windwebdev:phong1994@cluster0.mkuro.mongodb.net/mern-learnit?retryWrites=true&w=majority`, {
@@ -21,7 +23,8 @@ connectDB();//gọi hàm
 
 const app = express();
 
-app.get('/', (req, res) => res.send('HELLO WOLD'));
+app.use('/api/auth', authRouter);
+
 
 const PORT = 5000;
 
