@@ -26,7 +26,7 @@ router.post('/register', async(req,res) => {
         await newUser.save(); //lưu vào cơ sở dữ liệu
 
         //trả lại token 
-        const accessToken = jwt.sign({userId: newUser._id}, process.env); //userId =newUser sau khi newUser.save()lưu rồi thì userId: newUser.-id được tạo ra(id được tạo ra) trong database và nó sẽ thành data đưa vào accessToken và khi người dùng gửi accessToken cho chúng ta thì ta móc ra được userId để kiểm tra
+        const accessToken = jwt.sign({userId: newUser._id}, process.env.ACCESS_TOKEN_SECRET); //userId =newUser sau khi newUser.save()lưu rồi thì userId: newUser.-id được tạo ra(id được tạo ra) trong database và nó sẽ thành data đưa vào accessToken và khi người dùng gửi accessToken cho chúng ta thì ta móc ra được userId để kiểm tra
     } catch (error) {
         
     }
