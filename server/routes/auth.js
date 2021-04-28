@@ -1,17 +1,36 @@
 const express = require('express');
 const router = express.Router();
+const argon2 = require('argon2'); 
 
 const User = require('../models/User');
-//router.get('/', (req,res) => res.send('USER ROUTE'));
 
 //@route POST api/auth/register
 //@desc Register user
 //@access Public
-router.post('/register', async(req,res) => { //mỗi khi có post req gửi đến, chúng ta (req,res ) nói chuyện vs database thông qua mongoose  
-    const {username, password} = req.body;
+router.post('/register', async(req,res) => {  
+    const {username, password} = req.body; 
 
-    //Simple validation
-    if()
+    //simple validation
+    if(!username || !password) //nếu không có usernam hoặc password thì trả về 
+    return res.status(400).json({success: false, message:'Missing username and/or password' });
+
+    try {
+        //check for existing user
+        const user = await User.findOne({username}); // User mới import lúc nãy//username: username
+        if(user)
+        return res.status(400).json({success: false, message: 'Username already taken '});
+        
+        //all good // max hoá password đi
+        const hashedPassword = await argon2.hash(password);
+        const newUser = new User({username, password: hashedPassword}); //password là hashedPassword đã mã hoá trên 
+        await newUser.save(); //lưu vào cơ sở dữ liệu
+
+        //trả lại token 
+        const accessToken = jwt.sign({userId: newUser._id}, process.env); //userId =newUser sau khi newUser.save()lưu rồi thì userId: newUser.-id được tạo ra(id được tạo ra) trong database và nó sẽ thành data đưa vào accessToken và khi người dùng gửi accessToken cho chúng ta thì ta móc ra được userId để kiểm tra
+    } catch (error) {
+        
+    }
+
 })
 
 //exports file auth.js lại
