@@ -5,3 +5,13 @@ Content-Type: application/json
     "username": "wind1",
     "password": "wind"
 }
+// để có requiest mới ta ấn 3 ###
+###
+
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+    "username": "wind1",
+    "password": "wind"
+}
