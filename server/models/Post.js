@@ -18,8 +18,8 @@ const PostSchema = new Schema({
     },
     user: {
         type: Schema.Types.ObjectId,
-        ref: 'users' //nối sang bên User.js:  mongoose.model('users',UserSchema)
+        ref: 'users'
     }
-})
+});
 
 module.exports = mongoose.model('posts', PostSchema);

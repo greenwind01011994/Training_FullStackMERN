@@ -13,7 +13,9 @@ router.post('/register', async(req,res) => {
 
     //simple validation
     if(!username || !password) //nếu không có usernam hoặc password thì trả về 
-    return res.status(400).json({success: false, message:'Missing username and/or password' });
+    return res
+        .status(400)
+        .json({success: false, message:'Missing username and/or password' });
 
     try {
         //check for existing user
@@ -50,13 +52,23 @@ router.post('/register', async(req,res) => {
 //@access Public
 router.post('/login', async(req,res) => {
     const {username, password} = req.body;
+
+    //simple validation
     if(!username || !password)
-    return res.status(400).json({success: false, message:'Missing username and/or password' });
+    return res 
+        .status(400)
+        .json({
+            success: false,
+            message:'Missing username and/or password' 
+        });
     try {  
+        //check for exitsting user
         const user = await User.findOne({username}); //username: username
 
-        if(!user)
-        return res.status(400).json({success: false, message: 'Incorrect username '});
+        if(!user) //nếu không có user
+        return res
+            .status(400)
+            .json({success: false, message: 'Incorrect username '});
 
         //username found 
         const passwordValid = await argon2.verify(user.password, password);
@@ -64,15 +76,16 @@ router.post('/login', async(req,res) => {
         return res.status(400).json({success: false, message: 'Incorrect password'});
         
 
+        //all good
         //trả lại token 
-        const accessToken = jwt.sign({
-            userId: user._id},//user ta tìm được ở database xem đúng chưa
+        const accessToken = jwt.sign(
+            {userId: user._id},//user ta tìm được ở database xem đúng chưa
             process.env.ACCESS_TOKEN_SECRET
         ); //userId =newUser sau khi newUser.save()lưu rồi thì userId: newUser.-id được tạo ra(id được tạo ra) trong database và nó sẽ thành data đưa vào accessToken và khi người dùng gửi accessToken cho chúng ta thì ta móc ra được userId để kiểm tra
         res.json({
             success: true,
-             message: 'user logged in successfully',
-              accessToken
+            message: 'user logged in successfully',
+            accessToken
         });
     } catch (error) {
         console.log(error); // báo lỗi 

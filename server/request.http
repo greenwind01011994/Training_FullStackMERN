@@ -15,3 +15,14 @@ Content-Type: application/json
     "username": "wind1",
     "password": "wind"
 }
+
+###
+
+POST http://localhost:5000/api/posts
+Content-Type: application/json
+
+{
+    "description": "abc",
+    "url": "google.com",
+    "status": "LEARNING", //giống với những gì chúng ta khai báo status bên Post.js
+}
