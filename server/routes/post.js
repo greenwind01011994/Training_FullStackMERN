@@ -1,12 +1,13 @@
 const express = require('express');
 const router = express.Router();
+const verifyToken = require('../middleware/auth');
 
 const Post = require('../models/Post');
 
 //@route POST api/posts
 //@desc Create post
 //@access Private //được hiểu: người dùng phải login mới tạo một post mới, một cái skill mới cần phải học  
-router.post('/', async(req, res) => {
+router.post('/',verifyToken, async(req, res) => {
     const{title, description, url, status} = req.body; //ta lấy ra 
     
     //Simple validation
