@@ -16,7 +16,7 @@ const verifyToken = (req, res, next) => {
         console.log(error); // báo lỗi 
         res.status(403).json({
             success: false,
-            message: 'Internal token error '
+            message: 'Internal token '
         }) //trả lại
     
     }
