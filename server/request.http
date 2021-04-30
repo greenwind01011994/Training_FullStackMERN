@@ -21,6 +21,7 @@ Content-Type: application/json
 
 POST http://localhost:5000/api/posts
 Content-Type: application/json
+Authorization:  abcxyz
 
 {
     "title": "my first post",
