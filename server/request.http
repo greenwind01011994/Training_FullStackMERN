@@ -6,6 +6,7 @@ Content-Type: application/json
     "password": "wind"
 }
 
+// để có requiest mới ta ấn 3 ###
 ###
 
 POST http://localhost:5000/api/auth/login
@@ -22,7 +23,10 @@ POST http://localhost:5000/api/posts
 Content-Type: application/json
 
 {
+    "title": "my first post",
     "description": "abc",
     "url": "google.com",
     "status": "LEARNING"
+    //giống với những gì chúng ta khai báo status bên Post.js, nếu không nó nhảy qua catch{} báo error
+
 }
