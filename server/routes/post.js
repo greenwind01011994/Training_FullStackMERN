@@ -22,7 +22,7 @@ router.post('/',verifyToken, async(req, res) => {
             description, //description đọc lấy ra ở req.body trên
             url: (url.startsWith('https://')) ? url : `https://${url}`,
             status: status || 'TO LEARN ',
-            user: '608a2f92f604290ea868d4de'
+            user: req.userId
         }); 
         await newPost.save();
 

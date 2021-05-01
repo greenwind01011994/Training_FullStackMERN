@@ -2,7 +2,7 @@ POST  http://localhost:5000/api/auth/register
 Content-Type: application/json
 
 {
-    "username": "wind1",
+    "username": "wind",
     "password": "wind"
 }
 
@@ -21,13 +21,14 @@ Content-Type: application/json
 
 POST http://localhost:5000/api/posts
 Content-Type: application/json
-Authorization: Bearer  abcxyz
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MDhhMmY5MmY2MDQyOTBlYTg2OGQ0ZGUiLCJpYXQiOjE2MTk3NzUyNTR9.Dp3wXDTQrSHFJVg6DSkTo31mhA8-IIBCKneIVoxSX6g
 
 {
-    "title": "my first post",
-    "description": "abc",
-    "url": "google.com",
-    "status": "LEARNING"
+    "title": "React",
+    "description": "React",
+    "url": "react.com",
+    "status": "TO LEARN"
     //giống với những gì chúng ta khai báo status bên Post.js, nếu không nó nhảy qua catch{} báo error
+    //nếu người dùng không truyền vào thì mặc định là TO LEARN
 
 }
