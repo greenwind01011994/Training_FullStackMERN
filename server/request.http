@@ -21,7 +21,7 @@ Content-Type: application/json
 
 POST http://localhost:5000/api/posts
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MDhhMmY5MmY2MDQyOTBlYTg2OGQ0ZGUiLCJpYXQiOjE2MTk3NzUyNTR9.Dp3wXDTQrSHFJVg6DSkTo31mhA8-IIBCKneIVoxSX6g
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MDhhMmY5MmY2MDQyOTBlYTg2OGQ0ZGUiLCJpYXQiOjE2MTk5NDYzMTB9.4ihe7O0LvA7T2IbFbz6BToewwmtULpjvQXzpR4FhUSc
 
 {
     "title": "React",
@@ -32,3 +32,24 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MDhhM
     //nếu người dùng không truyền vào thì mặc định là TO LEARN
 
 }
+###
+GET  http://localhost:5000/api/posts
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MDhhMmY5MmY2MDQyOTBlYTg2OGQ0ZGUiLCJpYXQiOjE2MTk5NDYzMTB9.4ihe7O0LvA7T2IbFbz6BToewwmtULpjvQXzpR4FhUSc
+
+
+###
+PUT http://localhost:5000/api/posts/608e6953bbebc72bc842ccfa
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MDhhMmY5MmY2MDQyOTBlYTg2OGQ0ZGUiLCJpYXQiOjE2MTk5NDY2OTJ9.gxOd032j9at749U9s3tz-YtNR4t_jH5nzQMz-V4Jdus
+
+{
+  "title": "Vue",
+  "description": "VUEEEEE",
+  "url": "https://vuejs.org",
+  "status": "LEARNING"
+}
+
+###
+DELETE http://localhost:5000/api/posts/608e6953bbebc72bc842ccfa
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MDhhMmY5MmY2MDQyOTBlYTg2OGQ0ZGUiLCJpYXQiOjE2MTk5NDY5MDB9.Wjo-yT9gm8hey7N0PXfXwkF0k7QMeLCnkTz0MmCKLTo
