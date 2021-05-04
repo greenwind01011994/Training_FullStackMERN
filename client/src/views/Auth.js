@@ -1,3 +1,5 @@
+import LoginForm from '../components/auth/LoginForm'
+
 const Auth = ({authRoute}) => {
 	return (
         <>
